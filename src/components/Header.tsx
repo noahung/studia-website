@@ -58,7 +58,7 @@ export function Header({ onNavigate }: { onNavigate?: (page: string) => void }) 
             <img 
               src={logoImg} 
               alt="Studia" 
-              className="h-8 w-auto group-hover:scale-105 transition-transform"
+              className="h-10 sm:h-12 w-auto group-hover:scale-105 transition-transform"
             />
           </motion.button>
 
