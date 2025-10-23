@@ -47,13 +47,26 @@ export function Header({ onNavigate }: { onNavigate?: (page: string) => void }) 
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Mobile hamburger button - Left side */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden flex items-center justify-center text-white hover:text-white/70 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+
+          {/* Logo - Center */}
           <motion.button
             onClick={() => onNavigate?.('home')}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 group absolute left-1/2 transform -translate-x-1/2"
           >
             <img 
               src={logoImg} 
@@ -99,17 +112,12 @@ export function Header({ onNavigate }: { onNavigate?: (page: string) => void }) 
             </a>
           </motion.div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Download button - Right side */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all"
-            aria-label="Toggle menu"
+            onClick={() => scrollToSection('download')}
+            className="lg:hidden h-10 px-4 bg-transparent border border-white/20 text-white rounded-full hover:bg-white/5 transition-all duration-300 flex items-center justify-center text-sm font-medium"
           >
-            {isMobileMenuOpen ? (
-              <X className="w-5 h-5" />
-            ) : (
-              <Menu className="w-5 h-5" />
-            )}
+            Download
           </button>
         </div>
       </div>

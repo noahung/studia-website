@@ -7,19 +7,28 @@ This document outlines all the images needed for your Studia website, including 
 Place all images in the following directory:
 ```
 public/
-├── images/           # Static images (PNG, JPG, WebP)
-├── animated-icon.gif # ProblemSolution animated icon
-└── plan-animation.gif # PricingSection animated icon
+├── images/                    # Static images (PNG, JPG, WebP)
+│   ├── hero-image-desktop.png # Desktop hero image (1200x600px)
+│   ├── hero-image-mobile.png  # Mobile hero image (600x800px)
+│   └── ...                    # Other feature images
+├── animated-icon.gif          # ProblemSolution animated icon
+└── plan-animation.gif         # PricingSection animated icon
 ```
 
 ## 🎯 Required Images
 
-### 1. **Hero Section**
-**File:** `public/images/hero-image.png`  
-**Size:** 700x700px (1:1 square ratio)  
+### 1. **Hero Section - Responsive Images**
+**Desktop File:** `public/images/hero-image-desktop.png`  
+**Desktop Size:** 1200x400px (3:1 landscape ratio)  
+**Mobile File:** `public/images/hero-image-mobile.png`  
+**Mobile Size:** 400x600px (2:3 portrait ratio)  
 **Format:** PNG or WebP  
 **Purpose:** Main hero image showing Studia app interface  
-**Description:** Should showcase the app's main interface, study dashboard, or key features in action
+**Description:** 
+- **Desktop:** Wide landscape format optimized for the new container dimensions
+- **Mobile:** Portrait format optimized for mobile device proportions
+- Both should showcase the app's main interface, study dashboard, or key features in action
+- **Note:** The 3:1 ratio for desktop prevents squashing in the shorter container
 
 ### 1.2 **Download Section App Image**
 **File:** `public/images/download-app-mockup.png`  

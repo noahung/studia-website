@@ -15,6 +15,7 @@ export function DownloadSection() {
 
   return (
     <section 
+      id="download"
       className="relative py-32 lg:py-40 px-6 lg:px-12 overflow-hidden"
       style={{ backgroundColor: '#061022' }}
     >
