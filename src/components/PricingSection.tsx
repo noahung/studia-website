@@ -83,10 +83,26 @@ export function PricingSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-20 flex flex-col sm:flex-row items-center justify-center gap-5"
         >
-          <button className="h-14 px-10 bg-[#0033A0] text-white rounded-full hover:bg-[#0033A0]/90 transition-all duration-300 hover:shadow-[0_0_50px_rgba(0,51,160,0.4)] text-lg">
+          <button 
+            className="h-14 px-10 bg-[#0033A0] text-white rounded-full hover:bg-[#0033A0]/90 transition-all duration-300 hover:shadow-[0_0_50px_rgba(0,51,160,0.4)] text-lg"
+            onClick={() => {
+              const downloadSection = document.getElementById('download-section');
+              if (downloadSection) {
+                downloadSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             Start free
           </button>
-          <button className="relative h-14 px-10 bg-transparent text-white rounded-full overflow-hidden group text-lg">
+          <button 
+            className="relative h-14 px-10 bg-transparent text-white rounded-full overflow-hidden group text-lg"
+            onClick={() => {
+              const downloadSection = document.getElementById('download-section');
+              if (downloadSection) {
+                downloadSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
             {/* Animated border glow */}
             <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               <div className="absolute inset-0 rounded-full" 
@@ -154,14 +170,22 @@ function PricingRow({ plan, index }: { plan: typeof plans[0]; index: number }) {
         </div>
       )}
       
-      {/* Simple glowing neon border for Pro plan */}
+      {/* Enhanced neon glowing border for Pro plan */}
       {plan.popular && (
         <div className="absolute inset-0 rounded-3xl overflow-hidden">
+          {/* Outer glow layer */}
           <div 
-            className="absolute inset-0 rounded-3xl opacity-80"
+            className="absolute inset-0 rounded-3xl opacity-60"
             style={{
-              background: 'linear-gradient(90deg, transparent, rgba(0,51,160,0.8), rgba(59,130,246,0.6), rgba(0,51,160,0.8), transparent)',
-              animation: 'runningLight 3s linear infinite',
+              background: 'linear-gradient(45deg, rgba(0,51,160,0.8), rgba(30,64,175,0.6), rgba(59,130,246,0.4), rgba(0,51,160,0.8))',
+              filter: 'blur(2px)',
+            }}
+          />
+          {/* Inner glow layer - static */}
+          <div 
+            className="absolute inset-0 rounded-3xl opacity-40"
+            style={{
+              background: 'linear-gradient(45deg, rgba(0,51,160,0.9), rgba(30,64,175,0.7), rgba(59,130,246,0.5), rgba(0,51,160,0.9))',
               filter: 'blur(1px)',
             }}
           />
@@ -171,7 +195,7 @@ function PricingRow({ plan, index }: { plan: typeof plans[0]; index: number }) {
       <div 
         className={`p-6 sm:p-8 lg:p-8 rounded-3xl border transition-all duration-500 hover:border-white/20 relative z-10 h-fit w-full ${
           plan.popular 
-            ? 'bg-white/[0.03] border-white/20' 
+            ? 'bg-transparent border-transparent' 
             : 'bg-white/[0.01] border-white/10'
         }`}
       >
@@ -211,11 +235,13 @@ function PricingRow({ plan, index }: { plan: typeof plans[0]; index: number }) {
           {/* CTA */}
           <div className="flex flex-col gap-4">
             <button 
-              className={`h-14 px-10 rounded-full transition-all duration-300 whitespace-nowrap text-lg ${
-                plan.popular
-                  ? 'bg-[#0033A0] text-white hover:bg-[#0033A0]/90 hover:shadow-[0_0_50px_rgba(0,51,160,0.4)]'
-                  : 'bg-transparent border-2 border-white/20 text-white hover:bg-white/5 hover:border-white/30'
-              }`}
+              className="h-14 px-10 rounded-full transition-all duration-300 whitespace-nowrap text-lg bg-transparent border-2 border-white/20 text-white hover:bg-white/5 hover:border-white/30"
+              onClick={() => {
+                const downloadSection = document.getElementById('download-section');
+                if (downloadSection) {
+                  downloadSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
               {plan.price === '£0' ? 'Get started free' : 'Start Pro trial'}
             </button>

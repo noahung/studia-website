@@ -47,35 +47,38 @@ export function Header({ onNavigate }: { onNavigate?: (page: string) => void }) 
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
-          {/* Mobile hamburger button - Left side */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden flex items-center justify-center text-white hover:text-white/70 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {/* Left side - Logo on desktop, hamburger on mobile */}
+          <div className="flex items-center">
+            {/* Mobile hamburger button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden flex items-center justify-center text-white hover:text-white/70 transition-colors mr-4"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
 
-          {/* Logo - Center */}
-          <motion.button
-            onClick={() => onNavigate?.('home')}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-2 group absolute left-1/2 transform -translate-x-1/2"
-          >
-            <img 
-              src={logoImg} 
-              alt="Studia" 
-              className="h-10 sm:h-12 w-auto group-hover:scale-105 transition-transform"
-            />
-          </motion.button>
+            {/* Logo */}
+            <motion.button
+              onClick={() => onNavigate?.('home')}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-2 group"
+            >
+              <img 
+                src={logoImg} 
+                alt="Studia" 
+                className="h-10 sm:h-12 w-auto group-hover:scale-105 transition-transform"
+              />
+            </motion.button>
+          </div>
 
-          {/* Desktop Navigation */}
+          {/* Center - Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link, index) => (
               <motion.button
@@ -91,34 +94,16 @@ export function Header({ onNavigate }: { onNavigate?: (page: string) => void }) 
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <motion.div
+          {/* Right side - Download button */}
+          <motion.button
+            onClick={() => scrollToSection('download')}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="hidden lg:flex items-center gap-4"
-          >
-            <a
-              href="#login"
-              className="text-white/70 hover:text-white transition-colors duration-200"
-            >
-              Log in
-            </a>
-            <a
-              href="#signup"
-              className="h-10 px-6 bg-[#0033A0] text-white rounded-full hover:bg-[#0033A0]/90 transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,51,160,0.3)] flex items-center justify-center"
-            >
-              Get started
-            </a>
-          </motion.div>
-
-          {/* Mobile Download button - Right side */}
-          <button
-            onClick={() => scrollToSection('download')}
-            className="lg:hidden h-10 px-4 bg-transparent border border-white/20 text-white rounded-full hover:bg-white/5 transition-all duration-300 flex items-center justify-center text-sm font-medium"
+            className="h-10 px-6 bg-[#0033A0] text-white rounded-full hover:bg-[#0033A0]/90 transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,51,160,0.3)] flex items-center justify-center text-sm lg:text-base"
           >
             Download
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -141,19 +126,13 @@ export function Header({ onNavigate }: { onNavigate?: (page: string) => void }) 
                 {link.label}
               </button>
             ))}
-            <div className="pt-4 border-t border-white/10 space-y-3">
-              <a
-                href="#login"
-                className="block text-white/70 hover:text-white transition-colors duration-200 py-2"
-              >
-                Log in
-              </a>
-              <a
-                href="#signup"
+            <div className="pt-4 border-t border-white/10">
+              <button
+                onClick={() => scrollToSection('download')}
                 className="block w-full h-12 px-6 bg-[#0033A0] text-white rounded-full hover:bg-[#0033A0]/90 transition-all duration-300 flex items-center justify-center"
               >
-                Get started
-              </a>
+                Download
+              </button>
             </div>
           </nav>
         </motion.div>
