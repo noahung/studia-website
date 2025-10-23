@@ -27,7 +27,7 @@ export function HeroSection() {
   const heroImageOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden pt-20 sm:pt-0">
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden pt-32 sm:pt-0">
       {/* Animated gradient background */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
