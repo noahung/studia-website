@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "project": "Studia Landing Page",
+    "version": "1.0.0",
+    "description": "Design tokens for Studia mobile app landing page - dark, cinematic, scroll-driven",
+    "date": "2025-10-21"
+  },
+  "colors": {
+    "backgrounds": {
+      "navy": "#061022",
+      "charcoal": "#0F1720",
+      "surfacePrimary": "#0B0F12",
+      "surfaceSecondary": "#101418"
+    },
+    "accent": {
+      "ukBlue": "#0033A0"
+    },
+    "status": {
+      "success": "#26A65B",
+      "error": "#F44336",
+      "warning": "#FFC107",
+      "info": "#2196F3"
+    },
+    "text": {
+      "primary": "rgba(255, 255, 255, 0.95)",
+      "secondary": "rgba(255, 255, 255, 0.65)",
+      "muted": "rgba(255, 255, 255, 0.45)"
+    },
+    "border": {
+      "default": "rgba(255, 255, 255, 0.12)",
+      "muted": "rgba(255, 255, 255, 0.06)"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "primary": "Nunito Sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    },
+    "fontSizes": {
+      "h1Desktop": "72px",
+      "h1Tablet": "56px",
+      "h1Mobile": "40px",
+      "h2Desktop": "48px",
+      "h2Tablet": "36px",
+      "h2Mobile": "28px",
+      "h3Desktop": "32px",
+      "h3Tablet": "24px",
+      "h3Mobile": "20px",
+      "body": "16px",
+      "small": "14px",
+      "caption": "14px"
+    },
+    "fontWeights": {
+      "normal": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700,
+      "extrabold": 800
+    },
+    "lineHeights": {
+      "h1": 1.05,
+      "h2": 1.1,
+      "h3": 1.2,
+      "body": 1.5,
+      "tight": 1.25
+    },
+    "letterSpacing": {
+      "h1": "-0.02em",
+      "h2": "-0.01em",
+      "normal": "0em"
+    }
+  },
+  "spacing": {
+    "scale": "8px grid",
+    "values": {
+      "1": "8px",
+      "2": "16px",
+      "3": "24px",
+      "4": "32px",
+      "5": "40px",
+      "6": "48px",
+      "8": "64px",
+      "10": "80px",
+      "12": "96px",
+      "15": "120px",
+      "20": "160px"
+    },
+    "sections": {
+      "desktopVertical": "120-160px",
+      "tabletVertical": "80-120px",
+      "mobileVertical": "60-100px"
+    }
+  },
+  "borderRadius": {
+    "button": "14px",
+    "card": "20px",
+    "mockup": "24px",
+    "container": "20-28px",
+    "pill": "9999px"
+  },
+  "shadows": {
+    "light": "rgba(255, 255, 255, 0.02) 0px -8px 24px",
+    "dark": "rgba(0, 0, 0, 0.6) 0px 20px 60px",
+    "glow": "0 0 40px rgba(0, 51, 160, 0.15)",
+    "mockup": [
+      "rgba(255, 255, 255, 0.02) 0px -8px 24px",
+      "rgba(0, 0, 0, 0.6) 0px 20px 60px"
+    ]
+  },
+  "animation": {
+    "durations": {
+      "fast": "300ms",
+      "base": "520ms",
+      "slow": "800ms",
+      "flip": "600ms"
+    },
+    "easing": {
+      "smooth": "cubic-bezier(0.22, 0.78, 0.4, 1)",
+      "default": "ease-in-out"
+    },
+    "parallax": {
+      "background": "-10%",
+      "middle": "0%",
+      "foreground": "+10%"
+    }
+  },
+  "breakpoints": {
+    "mobile": "≤767px",
+    "tablet": "768-1279px",
+    "desktop": "≥1280px"
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "height": "48px",
+        "borderRadius": "9999px",
+        "background": "#0033A0",
+        "color": "#ffffff",
+        "paddingX": "32px"
+      },
+      "secondary": {
+        "height": "48px",
+        "borderRadius": "9999px",
+        "background": "transparent",
+        "border": "1px solid rgba(255, 255, 255, 0.12)",
+        "color": "rgba(255, 255, 255, 0.95)",
+        "paddingX": "32px"
+      }
+    },
+    "input": {
+      "borderRadius": "14px",
+      "background": "#101418",
+      "border": "1px solid rgba(255, 255, 255, 0.12)",
+      "height": "48px",
+      "paddingX": "16px"
+    },
+    "badge": {
+      "borderRadius": "6px",
+      "paddingX": "8px",
+      "paddingY": "4px",
+      "fontSize": "12px"
+    }
+  },
+  "cssVariables": {
+    "colors": {
+      "--bg-navy": "#061022",
+      "--bg-charcoal": "#0F1720",
+      "--surface-primary": "#0B0F12",
+      "--surface-secondary": "#101418",
+      "--accent-blue": "#0033A0",
+      "--status-success": "#26A65B",
+      "--status-error": "#F44336",
+      "--status-warning": "#FFC107",
+      "--status-info": "#2196F3",
+      "--text-primary": "rgba(255, 255, 255, 0.95)",
+      "--text-secondary": "rgba(255, 255, 255, 0.65)",
+      "--text-muted": "rgba(255, 255, 255, 0.45)"
+    },
+    "radius": {
+      "--radius-button": "14px",
+      "--radius-card": "20px",
+      "--radius-mockup": "24px",
+      "--radius-pill": "9999px"
+    },
+    "animation": {
+      "--ease-smooth": "cubic-bezier(0.22, 0.78, 0.4, 1)",
+      "--duration-base": "520ms",
+      "--duration-slow": "800ms"
+    }
+  },
+  "reactNativeTokens": {
+    "colors": {
+      "bgNavy": "#061022",
+      "bgCharcoal": "#0F1720",
+      "surfacePrimary": "#0B0F12",
+      "surfaceSecondary": "#101418",
+      "accentBlue": "#0033A0",
+      "statusSuccess": "#26A65B",
+      "statusError": "#F44336",
+      "statusWarning": "#FFC107",
+      "statusInfo": "#2196F3",
+      "textPrimary": "rgba(255, 255, 255, 0.95)",
+      "textSecondary": "rgba(255, 255, 255, 0.65)",
+      "textMuted": "rgba(255, 255, 255, 0.45)"
+    },
+    "borderRadius": {
+      "button": 14,
+      "card": 20,
+      "mockup": 24,
+      "pill": 999
+    },
+    "spacing": {
+      "xs": 8,
+      "sm": 16,
+      "md": 24,
+      "lg": 32,
+      "xl": 40,
+      "xxl": 48,
+      "xxxl": 64
+    }
+  }
+}
