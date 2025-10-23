@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
+import { AnimatedIcon } from './AnimatedIcon';
+import animatedIconGif from '../assets/animated-icon.gif';
 
 const problemMetrics = [
   {
@@ -126,6 +128,15 @@ export function ProblemSolution() {
       <div className="container mx-auto max-w-7xl relative z-10">
         {/* Hero Section */}
         <div className="text-center mb-20">
+          {/* Animated Icon */}
+          <AnimatedIcon 
+            src={animatedIconGif} 
+            alt="Study smarter icon"
+            width={200}
+            height={200}
+            className="mb-6"
+          />
+          
           <h2 
             className="text-5xl lg:text-7xl font-bold text-white mb-8"
             style={{

@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { Check } from 'lucide-react';
+import { AnimatedIcon } from './AnimatedIcon';
 
 const plans = [
   {
@@ -51,7 +52,16 @@ export function PricingSection() {
           transition={{ duration: 0.8, ease: [0.22, 0.78, 0.4, 1] }}
           className="mb-20 text-center"
         >
-          <h2 className="text-white mb-6">Choose your plan</h2>
+          {/* Animated Icon */}
+          <AnimatedIcon 
+            src="/studia-website/plan-animation.gif" 
+            alt="Choose your plan icon"
+            width={160}
+            height={160}
+            className="mb-8"
+          />
+          
+          <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">Choose your plan</h2>
           <p className="text-white/65 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
             Start for free and upgrade anytime. All plans include access to our comprehensive course library, 
             cloud synchronisation, and regular content updates. No hidden fees, no lock-in contracts.

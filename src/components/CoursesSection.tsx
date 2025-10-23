@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import { AnimatedIcon } from './AnimatedIcon';
 
 const courses = [
   { 
@@ -155,6 +156,15 @@ export function CoursesSection() {
           transition={{ duration: 0.8, ease: [0.22, 0.78, 0.4, 1] }}
           className="mb-20 text-center"
         >
+          {/* Animated Icon */}
+          <AnimatedIcon 
+            src="/studia-website/courses-animation.gif" 
+            alt="Courses we support icon"
+            width={140}
+            height={140}
+            className="mb-8"
+          />
+          
           <h2 
             className="text-white mb-6 text-4xl lg:text-5xl font-bold"
             style={{

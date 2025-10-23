@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Apple, Smartphone, Mail } from 'lucide-react';
 import { useState } from 'react';
+import { AnimatedIcon } from './AnimatedIcon';
 
 export function DownloadSection() {
   const [email, setEmail] = useState('');
@@ -38,6 +39,17 @@ export function DownloadSection() {
             className="space-y-8 lg:space-y-10"
           >
             <div className="space-y-6">
+              {/* Animated Icon */}
+              <div className="flex justify-start">
+                <AnimatedIcon 
+                  src="/studia-website/journey-animation.gif" 
+                  alt="Start your journey icon"
+                  width={120}
+                  height={120}
+                  className="mb-4"
+                />
+              </div>
+              
               <h2 className="text-white">
                 Start your journey today
               </h2>
@@ -99,7 +111,7 @@ export function DownloadSection() {
             </div>
           </motion.div>
 
-          {/* Right content - Phone mockup */}
+          {/* Right content - Your App Image */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -107,63 +119,15 @@ export function DownloadSection() {
             transition={{ duration: 1, delay: 0.2 }}
             className="relative h-[500px] lg:h-[600px] flex items-center justify-center"
           >
-            <div 
-              className="w-72 h-[580px] rounded-[40px] overflow-hidden shadow-[rgba(255,255,255,0.02)_0px_-8px_24px,rgba(0,0,0,0.6)_0px_20px_60px]"
-              style={{
-                background: 'linear-gradient(135deg, #0F1720 0%, #0B0F12 100%)',
-                border: '1px solid rgba(255,255,255,0.1)'
-              }}
-            >
-              <div className="p-8 h-full flex flex-col">
-                {/* Status bar */}
-                <div className="flex items-center justify-between mb-8">
-                  <div className="text-white text-sm">9:41</div>
-                  <div className="flex items-center gap-1">
-                    <div className="w-4 h-3 border border-white/30 rounded-sm" />
-                    <div className="w-1.5 h-3 bg-white/30 rounded-sm" />
-                  </div>
-                </div>
-
-                {/* App icon */}
-                <div className="flex items-center justify-center mb-8">
-                  <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#0033A0] to-[#0055CC] flex items-center justify-center shadow-[0_8px_32px_rgba(0,51,160,0.4)]">
-                    <div className="text-3xl">📚</div>
-                  </div>
-                </div>
-
-                {/* App name */}
-                <div className="text-center mb-12">
-                  <h3 className="text-white mb-2">Studia</h3>
-                  <p className="text-white/50 text-sm">Your study companion</p>
-                </div>
-
-                {/* Feature highlights */}
-                <div className="space-y-4 flex-1">
-                  {[
-                    { icon: '🎯', text: 'AI-powered study plans' },
-                    { icon: '📝', text: 'Smart flashcards' },
-                    { icon: '⏱️', text: 'Timed mock exams' },
-                    { icon: '📊', text: 'Progress tracking' }
-                  ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-white/5"
-                    >
-                      <span className="text-2xl">{item.icon}</span>
-                      <span className="text-white/80 text-sm">{item.text}</span>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Download button */}
-                <button className="w-full h-12 bg-[#0033A0] text-white rounded-full">
-                  Get started
-                </button>
-              </div>
+            <div className="relative w-72 h-[580px] rounded-[40px] overflow-hidden shadow-[rgba(255,255,255,0.02)_0px_-8px_24px,rgba(0,0,0,0.6)_0px_20px_60px]">
+              <img
+                src="/studia-website/images/download-app-mockup.png"
+                alt="Studia App Interface"
+                className="w-full h-full object-cover rounded-[40px]"
+                style={{
+                  filter: 'drop-shadow(0 0 40px rgba(0,51,160,0.3))',
+                }}
+              />
             </div>
           </motion.div>
         </div>

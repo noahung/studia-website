@@ -4,47 +4,17 @@ import { Brain, CreditCard, Timer, TrendingUp, WifiOff } from 'lucide-react';
 
 // Import feature images with fallback handling
 let aiStudyPlanImg: string;
-let flashcardQuestionImg: string;
-let flashcardAnswerImg: string;
+let flashcardImg: string;
 let mockExamImg: string;
 let progressImg: string;
 let offlineImg: string;
 
-try {
-  aiStudyPlanImg = new URL('/public/images/feature-ai-study-plan.png', import.meta.url).href;
-} catch {
-  aiStudyPlanImg = '';
-}
-
-try {
-  flashcardQuestionImg = new URL('/public/images/feature-flashcards-question.png', import.meta.url).href;
-} catch {
-  flashcardQuestionImg = '';
-}
-
-try {
-  flashcardAnswerImg = new URL('/public/images/feature-flashcards-answer.png', import.meta.url).href;
-} catch {
-  flashcardAnswerImg = '';
-}
-
-try {
-  mockExamImg = new URL('/public/images/feature-mock-exam.png', import.meta.url).href;
-} catch {
-  mockExamImg = '';
-}
-
-try {
-  progressImg = new URL('/public/images/feature-progress.png', import.meta.url).href;
-} catch {
-  progressImg = '';
-}
-
-try {
-  offlineImg = new URL('/public/images/feature-offline.png', import.meta.url).href;
-} catch {
-  offlineImg = '';
-}
+// Use direct paths for public assets
+aiStudyPlanImg = '/studia-website/images/feature-ai-study-plan.png';
+flashcardImg = '/studia-website/images/feature-flashcards-question.png';
+mockExamImg = '/studia-website/images/feature-mock-exam.png';
+progressImg = '/studia-website/images/feature-progress.png';
+offlineImg = '/studia-website/images/feature-offline.png';
 
 const features = [
   {
@@ -115,7 +85,7 @@ function FeatureTile({ feature, index }: { feature: typeof features[0]; index: n
             transition={{ duration: 0.8, ease: [0.22, 0.78, 0.4, 1] }}
             className="space-y-4 sm:space-y-6 lg:space-y-8"
           >
-            <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl">{feature.title}</h2>
+            <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl pt-4 sm:pt-0">{feature.title}</h2>
             <p className="text-base sm:text-lg text-white/65 max-w-xl leading-relaxed">
               {feature.description}
             </p>
@@ -296,10 +266,10 @@ function FlashcardMockup() {
           }}
           transition={{ duration: 0.6 }}
         >
-          {flashcardQuestionImg ? (
+          {flashcardImg ? (
             <img
-              src={flashcardQuestionImg}
-              alt="Flashcard Question"
+              src={flashcardImg}
+              alt="Smart Flashcards"
               className="w-full h-full object-cover rounded-[38px]"
             />
           ) : (
@@ -326,10 +296,10 @@ function FlashcardMockup() {
           }}
           transition={{ duration: 0.6 }}
         >
-          {flashcardAnswerImg ? (
+          {flashcardImg ? (
             <img
-              src={flashcardAnswerImg}
-              alt="Flashcard Answer"
+              src={flashcardImg}
+              alt="Smart Flashcards"
               className="w-full h-full object-cover rounded-[38px]"
               style={{ transform: 'rotateY(180deg)' }}
             />
