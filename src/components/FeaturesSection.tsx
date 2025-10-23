@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Brain, CreditCard, Timer, TrendingUp, WifiOff } from 'lucide-react';
 
 // Import feature images with fallback handling
@@ -207,8 +207,6 @@ function AIStudyPlanMockup() {
 }
 
 function FlashcardMockup() {
-  const [flipped, setFlipped] = useState(false);
-
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Glowing background neon border */}
@@ -254,70 +252,28 @@ function FlashcardMockup() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative w-[276px] h-[556px] sm:w-[316px] sm:h-[636px] lg:w-[336px] lg:h-[716px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(33,150,243,0.6),0_0_50px_rgba(0,51,160,0.4)] cursor-pointer"
-        onClick={() => setFlipped(!flipped)}
-        whileHover={{ scale: 1.02 }}
+        className="relative w-[276px] h-[556px] sm:w-[316px] sm:h-[636px] lg:w-[336px] lg:h-[716px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(33,150,243,0.6),0_0_50px_rgba(0,51,160,0.4)]"
       >
-        <motion.div
-          className="absolute inset-0 rounded-[38px]"
-          style={{
-            rotateY: flipped ? 180 : 0,
-            backfaceVisibility: 'hidden'
-          }}
-          transition={{ duration: 0.6 }}
-        >
-          {flashcardImg ? (
-            <img
-              src={flashcardImg}
-              alt="Smart Flashcards"
-              className="w-full h-full object-cover rounded-[38px]"
-            />
-          ) : (
-            <div className="absolute inset-0 rounded-[38px] p-8 flex items-center justify-center shadow-[rgba(255,255,255,0.02)_0px_-8px_24px,rgba(0,0,0,0.6)_0px_20px_60px]"
-              style={{
-                background: 'linear-gradient(135deg, #0F1720 0%, #0B0F12 100%)',
-                border: '1px solid rgba(255,255,255,0.1)',
-              }}
-            >
-              <div className="text-center">
-                <p className="text-white/50 text-sm mb-4">Question</p>
-                <h3 className="text-white mb-6">What is the definition of equity release?</h3>
-                <p className="text-white/40 text-sm">Tap to reveal answer</p>
-              </div>
+        {flashcardImg ? (
+          <img
+            src={flashcardImg}
+            alt="Smart Flashcards"
+            className="w-full h-full object-cover rounded-[38px]"
+          />
+        ) : (
+          <div className="absolute inset-0 rounded-[38px] p-8 flex items-center justify-center shadow-[rgba(255,255,255,0.02)_0px_-8px_24px,rgba(0,0,0,0.6)_0px_20px_60px]"
+            style={{
+              background: 'linear-gradient(135deg, #0F1720 0%, #0B0F12 100%)',
+              border: '1px solid rgba(255,255,255,0.1)',
+            }}
+          >
+            <div className="text-center">
+              <p className="text-white/50 text-sm mb-4">Smart Flashcards</p>
+              <h3 className="text-white mb-6">Intelligent spaced repetition</h3>
+              <p className="text-white/40 text-sm">Master complex concepts</p>
             </div>
-          )}
-        </motion.div>
-        
-        <motion.div
-          className="absolute inset-0 rounded-[38px]"
-          style={{
-            rotateY: flipped ? 0 : -180,
-            backfaceVisibility: 'hidden'
-          }}
-          transition={{ duration: 0.6 }}
-        >
-          {flashcardImg ? (
-            <img
-              src={flashcardImg}
-              alt="Smart Flashcards"
-              className="w-full h-full object-cover rounded-[38px]"
-              style={{ transform: 'rotateY(180deg)' }}
-            />
-          ) : (
-            <div className="absolute inset-0 rounded-[38px] p-8 flex items-center justify-center shadow-[rgba(255,255,255,0.02)_0px_-8px_24px,rgba(0,0,0,0.6)_0px_20px_60px]"
-              style={{
-                background: 'linear-gradient(135deg, #0033A0 0%, #0055CC 100%)',
-                border: '1px solid rgba(255,255,255,0.2)',
-                transform: 'rotateY(180deg)'
-              }}
-            >
-              <div className="text-center" style={{ transform: 'rotateY(180deg)' }}>
-                <p className="text-white/70 text-sm mb-4">Answer</p>
-                <p className="text-white">A financial product that allows homeowners to access the equity in their property whilst continuing to live there.</p>
-              </div>
-            </div>
-          )}
-        </motion.div>
+          </div>
+        )}
       </motion.div>
     </div>
   );
