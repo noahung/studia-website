@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
@@ -26,7 +27,7 @@ export function HeroSection() {
   const heroImageOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden pt-20 sm:pt-0">
       {/* Animated gradient background */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
@@ -74,7 +75,7 @@ export function HeroSection() {
               transition={{ duration: 0.8, ease: [0.22, 0.78, 0.4, 1] }}
               className="space-y-6"
             >
-              <h1 className="text-white">
+              <h1 className="text-5xl lg:text-7xl font-bold text-white">
                 Your personal study companion.
               </h1>
               <p className="text-xl lg:text-2xl text-white/65 max-w-xl leading-relaxed">
