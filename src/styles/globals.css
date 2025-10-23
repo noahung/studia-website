@@ -274,3 +274,22 @@ html {
     grid-template-columns: repeat(4, 1fr) !important;
   }
 }
+
+/* Force grid layout for how it works section */
+.how-it-works-grid {
+  display: grid !important;
+  grid-template-columns: repeat(1, 1fr) !important;
+  gap: 2rem !important;
+}
+
+@media (min-width: 768px) {
+  .how-it-works-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .how-it-works-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
