@@ -20,31 +20,56 @@ const features = [
   {
     icon: Brain,
     title: 'AI Study Plans',
-    description: 'Get a fully personalised learning path powered by advanced AI that adapts to your unique progress, learning style, and schedule. Our intelligent algorithm analyzes your strengths and weaknesses, dynamically adjusting your study plan to focus on areas that need improvement. Experience adaptive learning that evolves with you, ensuring you\'re always working on what matters most for exam success.',
+    description: 'Get a fully personalised learning path powered by advanced AI that adapts to your unique progress, learning style, and schedule. Our intelligent algorithm analyses your strengths and weaknesses, dynamically adjusting your study plan to focus on areas that need improvement. Experience adaptive learning that evolves with you, ensuring you\'re always working on what matters most for exam success.',
+    points: [
+      'Personalised learning paths that adapt to your progress',
+      'Intelligent analysis of strengths and weaknesses',
+      'Dynamic study plan adjustments based on performance'
+    ],
     color: '#0033A0'
   },
   {
     icon: CreditCard,
     title: 'Smart Flashcards',
-    description: 'Master complex concepts with our intelligent spaced repetition system that scientifically optimizes your revision schedule. Our smart flashcards use proven cognitive science techniques to present information at the perfect moment for maximum retention. Track your mastery of each topic, review difficult concepts more frequently, and consolidate your knowledge with confidence as exam day approaches.',
+    description: 'Master complex concepts with our intelligent spaced repetition system that scientifically optimises your revision schedule. Our smart flashcards use proven cognitive science techniques to present information at the perfect moment for maximum retention. Track your mastery of each topic, review difficult concepts more frequently, and consolidate your knowledge with confidence as exam day approaches.',
+    points: [
+      'Scientifically optimised spaced repetition system',
+      'Proven cognitive science techniques for maximum retention',
+      'Track mastery and focus on difficult concepts'
+    ],
     color: '#2196F3'
   },
   {
     icon: Timer,
     title: 'Timed Mock Exams',
     description: 'Experience the real exam environment with our realistic, timed mock exams that replicate the exact conditions you\'ll face on test day. Get instant feedback on your performance, detailed analytics showing your strengths and areas for improvement, and comprehensive explanations for every question. Build your exam confidence, improve time management, and identify knowledge gaps before they become problems.',
+    points: [
+      'Realistic exam conditions with accurate timing',
+      'Instant feedback and detailed performance analytics',
+      'Comprehensive explanations for every question'
+    ],
     color: '#26A65B'
   },
   {
     icon: TrendingUp,
     title: 'Progress Tracking',
     description: 'Gain deep visual insights into your performance across all subjects, topics, and question types with our comprehensive analytics dashboard. Monitor your study time, completion rates, accuracy trends, and see your improvement over time with beautiful, easy-to-understand charts and graphs. Stay motivated by watching your progress grow and make data-driven decisions about where to focus your study efforts.',
+    points: [
+      'Comprehensive analytics dashboard with visual insights',
+      'Track study time, completion rates, and accuracy trends',
+      'Data-driven decisions for focused study efforts'
+    ],
     color: '#FFC107'
   },
   {
     icon: WifiOff,
     title: 'Offline & Multi-course',
     description: 'Study anywhere, anytime with full offline access to all your courses and materials. No internet connection required - download your content and study on the go during your commute, at the library, or wherever you are. Access multiple professional qualification courses from a single account, seamlessly switching between subjects and tracking progress across all your studies in one convenient place.',
+    points: [
+      'Full offline access to all courses and materials',
+      'Download content for study anywhere, anytime',
+      'Multiple professional qualifications in one account'
+    ],
     color: '#0033A0'
   }
 ];
@@ -63,56 +88,65 @@ function FeatureTile({ feature, index }: { feature: typeof features[0]; index: n
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start']
+    offset: ['start center', 'end center']
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
+  // No parallax effects - just fade in/out
 
   return (
     <div ref={ref} className="min-h-screen flex items-center justify-center py-12 sm:py-16 lg:py-20">
-      <motion.div
-        style={{ opacity, scale }}
-        className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 border border-white/10 rounded-2xl"
-      >
+      <div className="container mx-auto max-w-7xl px-6 sm:px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
-          {/* Left content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: '-100px' }}
-            transition={{ duration: 0.8, ease: [0.22, 0.78, 0.4, 1] }}
-            className="space-y-4 sm:space-y-6 lg:space-y-8"
-          >
-            <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl pt-4 sm:pt-0">{feature.title}</h2>
-            <p className="text-base sm:text-lg text-white/65 max-w-xl leading-relaxed">
+          {/* Left content - no animations */}
+          <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+            <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl pt-4 sm:pt-0">
+              {feature.title}
+            </h2>
+            <p className="text-base sm:text-lg text-white/65 max-w-xl leading-relaxed mb-6">
               {feature.description}
             </p>
-          </motion.div>
+            
+            {/* Bullet points without bullets */}
+            <div className="space-y-2">
+              {feature.points.map((point, pointIndex) => (
+                <div
+                  key={pointIndex}
+                  className="text-sm text-white/60 leading-relaxed"
+                >
+                  {point}
+                </div>
+              ))}
+            </div>
+          </div>
 
-          {/* Right content - Mockup */}
-          <motion.div style={{ y }} className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
-            {index === 0 && <AIStudyPlanMockup />}
-            {index === 1 && <FlashcardMockup />}
-            {index === 2 && <MockExamMockup />}
-            {index === 3 && <ProgressMockup />}
-            {index === 4 && <OfflineMockup />}
+          {/* Right content - Mockup with enhanced parallax */}
+          <motion.div 
+            className="relative h-[160px] sm:h-[200px] lg:h-[240px]"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false, margin: '-200px 0px -200px 0px' }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {index === 0 && <AIStudyPlanMockup color={feature.color} />}
+            {index === 1 && <FlashcardMockup color={feature.color} />}
+            {index === 2 && <MockExamMockup color={feature.color} />}
+            {index === 3 && <ProgressMockup color={feature.color} />}
+            {index === 4 && <OfflineMockup color={feature.color} />}
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
 
-function AIStudyPlanMockup() {
+function AIStudyPlanMockup({ color }: { color: string }) {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Glowing background neon border */}
       <motion.div
-        className="absolute w-[280px] h-[560px] sm:w-[320px] sm:h-[640px] lg:w-[340px] lg:h-[720px] rounded-[40px]"
+        className="absolute w-[128px] h-[256px] sm:w-[160px] sm:h-[320px] lg:w-[176px] lg:h-[352px] rounded-[40px]"
         style={{
-          background: 'linear-gradient(45deg, #0033A0, #2196F3, #0033A0, #2196F3)',
+          background: `linear-gradient(45deg, ${color}, #2196F3, ${color}, #2196F3)`,
           backgroundSize: '300% 300%',
           filter: 'blur(2px)',
           opacity: 0.8,
@@ -129,9 +163,9 @@ function AIStudyPlanMockup() {
       
       {/* Secondary glow layer */}
       <motion.div
-        className="absolute w-[290px] h-[570px] sm:w-[330px] sm:h-[650px] lg:w-[350px] lg:h-[730px] rounded-[45px]"
+        className="absolute w-[136px] h-[264px] sm:w-[168px] sm:h-[328px] lg:w-[184px] lg:h-[360px] rounded-[45px]"
         style={{
-          background: 'linear-gradient(45deg, #0033A0, #2196F3, #0033A0, #2196F3)',
+          background: `linear-gradient(45deg, ${color}, #2196F3, ${color}, #2196F3)`,
           backgroundSize: '400% 400%',
           filter: 'blur(4px)',
           opacity: 0.7,
@@ -151,7 +185,7 @@ function AIStudyPlanMockup() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative w-[276px] h-[556px] sm:w-[316px] sm:h-[636px] lg:w-[336px] lg:h-[716px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(0,51,160,0.6),0_0_50px_rgba(33,150,243,0.4)]"
+        className="relative w-[125px] h-[253px] sm:w-[157px] sm:h-[317px] lg:w-[173px] lg:h-[349px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(0,51,160,0.6),0_0_50px_rgba(33,150,243,0.4)]"
       >
         {aiStudyPlanImg ? (
           <img
@@ -206,14 +240,14 @@ function AIStudyPlanMockup() {
   );
 }
 
-function FlashcardMockup() {
+function FlashcardMockup({ color }: { color: string }) {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Glowing background neon border */}
       <motion.div
-        className="absolute w-[280px] h-[560px] sm:w-[320px] sm:h-[640px] lg:w-[340px] lg:h-[720px] rounded-[40px]"
+        className="absolute w-[128px] h-[256px] sm:w-[160px] sm:h-[320px] lg:w-[176px] lg:h-[352px] rounded-[40px]"
         style={{
-          background: 'linear-gradient(45deg, #2196F3, #0033A0, #2196F3, #0033A0)',
+          background: `linear-gradient(45deg, ${color}, #0033A0, ${color}, #0033A0)`,
           backgroundSize: '300% 300%',
           filter: 'blur(2px)',
           opacity: 0.8,
@@ -230,9 +264,9 @@ function FlashcardMockup() {
       
       {/* Secondary glow layer */}
       <motion.div
-        className="absolute w-[290px] h-[570px] sm:w-[330px] sm:h-[650px] lg:w-[350px] lg:h-[730px] rounded-[45px]"
+        className="absolute w-[136px] h-[264px] sm:w-[168px] sm:h-[328px] lg:w-[184px] lg:h-[360px] rounded-[45px]"
         style={{
-          background: 'linear-gradient(45deg, #2196F3, #0033A0, #2196F3, #0033A0)',
+          background: `linear-gradient(45deg, ${color}, #0033A0, ${color}, #0033A0)`,
           backgroundSize: '400% 400%',
           filter: 'blur(4px)',
           opacity: 0.7,
@@ -252,7 +286,7 @@ function FlashcardMockup() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative w-[276px] h-[556px] sm:w-[316px] sm:h-[636px] lg:w-[336px] lg:h-[716px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(33,150,243,0.6),0_0_50px_rgba(0,51,160,0.4)]"
+        className="relative w-[125px] h-[253px] sm:w-[157px] sm:h-[317px] lg:w-[173px] lg:h-[349px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(33,150,243,0.6),0_0_50px_rgba(0,51,160,0.4)]"
       >
         {flashcardImg ? (
           <img
@@ -279,14 +313,14 @@ function FlashcardMockup() {
   );
 }
 
-function MockExamMockup() {
+function MockExamMockup({ color }: { color: string }) {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Glowing background neon border */}
       <motion.div
-        className="absolute w-[280px] h-[560px] sm:w-[320px] sm:h-[640px] lg:w-[340px] lg:h-[720px] rounded-[40px]"
+        className="absolute w-[128px] h-[256px] sm:w-[160px] sm:h-[320px] lg:w-[176px] lg:h-[352px] rounded-[40px]"
         style={{
-          background: 'linear-gradient(45deg, #26A65B, #FFC107, #26A65B, #FFC107)',
+          background: `linear-gradient(45deg, ${color}, #FFC107, ${color}, #FFC107)`,
           backgroundSize: '300% 300%',
           filter: 'blur(2px)',
           opacity: 0.8,
@@ -303,9 +337,9 @@ function MockExamMockup() {
       
       {/* Secondary glow layer */}
       <motion.div
-        className="absolute w-[290px] h-[570px] sm:w-[330px] sm:h-[650px] lg:w-[350px] lg:h-[730px] rounded-[45px]"
+        className="absolute w-[136px] h-[264px] sm:w-[168px] sm:h-[328px] lg:w-[184px] lg:h-[360px] rounded-[45px]"
         style={{
-          background: 'linear-gradient(45deg, #26A65B, #FFC107, #26A65B, #FFC107)',
+          background: `linear-gradient(45deg, ${color}, #FFC107, ${color}, #FFC107)`,
           backgroundSize: '400% 400%',
           filter: 'blur(4px)',
           opacity: 0.7,
@@ -325,7 +359,7 @@ function MockExamMockup() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative w-[276px] h-[556px] sm:w-[316px] sm:h-[636px] lg:w-[336px] lg:h-[716px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(38,166,91,0.6),0_0_50px_rgba(255,193,7,0.4)]"
+        className="relative w-[125px] h-[253px] sm:w-[157px] sm:h-[317px] lg:w-[173px] lg:h-[349px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(38,166,91,0.6),0_0_50px_rgba(255,193,7,0.4)]"
       >
         {mockExamImg ? (
           <img
@@ -384,14 +418,14 @@ function MockExamMockup() {
   );
 }
 
-function ProgressMockup() {
+function ProgressMockup({ color }: { color: string }) {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Glowing background neon border */}
       <motion.div
-        className="absolute w-[280px] h-[560px] sm:w-[320px] sm:h-[640px] lg:w-[340px] lg:h-[720px] rounded-[40px]"
+        className="absolute w-[128px] h-[256px] sm:w-[160px] sm:h-[320px] lg:w-[176px] lg:h-[352px] rounded-[40px]"
         style={{
-          background: 'linear-gradient(45deg, #FFC107, #26A65B, #FFC107, #26A65B)',
+          background: `linear-gradient(45deg, ${color}, #26A65B, ${color}, #26A65B)`,
           backgroundSize: '300% 300%',
           filter: 'blur(2px)',
           opacity: 0.8,
@@ -408,9 +442,9 @@ function ProgressMockup() {
       
       {/* Secondary glow layer */}
       <motion.div
-        className="absolute w-[290px] h-[570px] sm:w-[330px] sm:h-[650px] lg:w-[350px] lg:h-[730px] rounded-[45px]"
+        className="absolute w-[136px] h-[264px] sm:w-[168px] sm:h-[328px] lg:w-[184px] lg:h-[360px] rounded-[45px]"
         style={{
-          background: 'linear-gradient(45deg, #FFC107, #26A65B, #FFC107, #26A65B)',
+          background: `linear-gradient(45deg, ${color}, #26A65B, ${color}, #26A65B)`,
           backgroundSize: '400% 400%',
           filter: 'blur(4px)',
           opacity: 0.7,
@@ -430,7 +464,7 @@ function ProgressMockup() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative w-[276px] h-[556px] sm:w-[316px] sm:h-[636px] lg:w-[336px] lg:h-[716px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(255,193,7,0.6),0_0_50px_rgba(38,166,91,0.4)]"
+        className="relative w-[125px] h-[253px] sm:w-[157px] sm:h-[317px] lg:w-[173px] lg:h-[349px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(255,193,7,0.6),0_0_50px_rgba(38,166,91,0.4)]"
       >
         {progressImg ? (
           <img
@@ -514,14 +548,14 @@ function ProgressMockup() {
   );
 }
 
-function OfflineMockup() {
+function OfflineMockup({ color }: { color: string }) {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Glowing background neon border */}
       <motion.div
-        className="absolute w-[280px] h-[560px] sm:w-[320px] sm:h-[640px] lg:w-[340px] lg:h-[720px] rounded-[40px]"
+        className="absolute w-[128px] h-[256px] sm:w-[160px] sm:h-[320px] lg:w-[176px] lg:h-[352px] rounded-[40px]"
         style={{
-          background: 'linear-gradient(45deg, #0033A0, #2196F3, #0033A0, #2196F3)',
+          background: `linear-gradient(45deg, ${color}, #2196F3, ${color}, #2196F3)`,
           backgroundSize: '300% 300%',
           filter: 'blur(2px)',
           opacity: 0.8,
@@ -538,9 +572,9 @@ function OfflineMockup() {
       
       {/* Secondary glow layer */}
       <motion.div
-        className="absolute w-[290px] h-[570px] sm:w-[330px] sm:h-[650px] lg:w-[350px] lg:h-[730px] rounded-[45px]"
+        className="absolute w-[136px] h-[264px] sm:w-[168px] sm:h-[328px] lg:w-[184px] lg:h-[360px] rounded-[45px]"
         style={{
-          background: 'linear-gradient(45deg, #0033A0, #2196F3, #0033A0, #2196F3)',
+          background: `linear-gradient(45deg, ${color}, #2196F3, ${color}, #2196F3)`,
           backgroundSize: '400% 400%',
           filter: 'blur(4px)',
           opacity: 0.7,
@@ -560,7 +594,7 @@ function OfflineMockup() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative w-[276px] h-[556px] sm:w-[316px] sm:h-[636px] lg:w-[336px] lg:h-[716px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(0,51,160,0.6),0_0_50px_rgba(33,150,243,0.4)]"
+        className="relative w-[125px] h-[253px] sm:w-[157px] sm:h-[317px] lg:w-[173px] lg:h-[349px] rounded-[38px] overflow-hidden shadow-[0_0_100px_rgba(0,51,160,0.6),0_0_50px_rgba(33,150,243,0.4)]"
       >
         {offlineImg ? (
           <img
